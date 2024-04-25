@@ -34,6 +34,7 @@ Orders.forEach(order => {
                     </td>
                     <td class="primary">Details</td>
                     <td class="primary">AYOKO N</td>
+                    <button type="button">Click Me!</button>
                     `;
     tr.innerHTML = trContent;
     document.querySelector('table tbody').appendChild(tr);

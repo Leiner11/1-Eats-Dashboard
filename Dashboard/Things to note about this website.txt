@@ -1,3 +1,9 @@
-Current issue:
+Current issues:
+
+all html pages - If you use darkmode in the dashboard and move to another html it will go back to light mode (So you will need to
+manually press the dark mode again if you want the dark mode version of it)
+
 index.html - when you add more than 10 orders it will overlap with the orders (Simply there should be a scroll bar inside
 of the recent orders)
+
+Analytics.html (CSS/JS) - The texts on the barchart and graph are darkened when using dark mode.

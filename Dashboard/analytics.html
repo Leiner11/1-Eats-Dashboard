@@ -24,7 +24,7 @@
             </div>
 
             <div class="sidebar">
-                <a href="#" class="active">
+                <a href="index.html">
                     <span class="material-symbols-outlined">grid_view</span>
                     <h3>Dashboard</h3>
                 </a>
@@ -37,7 +37,7 @@
                     <span class="material-symbols-outlined">receipt_long</span>
                     <h3>Orders</h3>
                 </a>
-                <a href="analytics.html">
+                <a href="#" class="active">
                     <span class="material-symbols-outlined">insights</span>
                     <h3>Analytics</h3>
                 </a>
@@ -63,7 +63,7 @@
         <!----- END OF ASIDE BAR ----->
 
         <main>
-            <h1>Dashboard</h1>
+            <h1>Analytics</h1>
 
             <div class="date">
                 <input type="date">
@@ -126,36 +126,24 @@
                     </div>
                     <small class="text-muted">Last 24 Hours</small>
                 </div>
-                <!----- END OF INCOME ----->
             </div>
+            <!----- END OF INCOME ----->
 
-            <!--------------- END OF INSIGHTS --------------->
+            <div class="charts">
 
-            <div class="recent-orders">
-                <h2>Recent Orders</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Product Name</th>
-                            <th>Product Number</th>
-                            <th>Payment</th>
-                            <th>Status</th>
-                            <th></th>
-                        </tr>
-                        <tbody>
-                            <!--<tr>
-                                <td>Adobong Manakk</td>
-                                <td>85631</td>
-                                <td>Due</td>
-                                <td class="warning">Pending</td>
-                                <td class="primary">Details</td>
-                            </tr>
-                        -->
-                    </thead>
-                </table>
+                <div class="charts-card">
+                    <p class="chart-title">Top 5 Products</p>
+                    <div id="bar-chart"></div>
+                </div>
+
+                <div class="charts-card">
+                    <p class="chart-title">Purchase and Sales Orders</p>
+                    <div id="area-chart"></div>
+                </div>
             </div>
         </main>
-        <!------------------- END OF MAIN --------------------->
+            <!--------------- END OF INSIGHTS --------------->
+
 
         <div class="right">
             <div class="top">
@@ -177,39 +165,6 @@
                 </div>
             </div>
             <!----- END OF TOP ------>
-            <div class="recent-updates">
-                <h2> Recent Updates</h2>
-                <div class="updates">
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="./images/profile-2.jpg">
-                        </div>
-                        <div class="message">
-                            <p><b>Joshua Decoy Sarmiento</b> received his order of Adobong Manakk</p>
-                            <small class="text-muted">2 minutes ago</small>
-                        </div>
-                    </div>
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="./images/profile-3.jpg">
-                        </div>
-                        <div class="message">
-                            <p><b>Raven Habibi Singhid</b> received his order of Adobong Manakk</p>
-                            <small class="text-muted">2 minutes ago</small>
-                        </div>
-                    </div>
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="./images/profile-4.jpg">
-                        </div>
-                        <div class="message">
-                            <p><b>Princess Reniel Ariado</b> received his order of Adobong Manakk</p>
-                            <small class="text-muted">2 minutes ago</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--------------- END OF RECENT UPDATES --------------->
             <div class="sales-analytics">
                 <h2>Sales Analytics</h2>
                 <div class="item online">
@@ -267,7 +222,10 @@
             </div>
         </div>
     </div>
-
+    <!-- Scripts -->
+    <!-- Apex Charts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.49.0/apexcharts.min.js"></script>
+    <script src="./scripts.js"></script>
     <script src="./order.js"></script>
     <script src="./index.js"></script>
 </body>
