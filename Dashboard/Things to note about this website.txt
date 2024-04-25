@@ -1,0 +1,3 @@
+Current issue:
+index.html - when you add more than 10 orders it will overlap with the orders (Simply there should be a scroll bar inside
+of the recent orders)
