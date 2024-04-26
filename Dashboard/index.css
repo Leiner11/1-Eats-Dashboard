@@ -577,6 +577,133 @@ main .recent-orders2 a{
     font-weight: 600;
 }
 
+.gallery2{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.content2{
+    width: 20%;
+    margin: 2%;
+    box-sizing: border-box;
+    float: left;
+    text-align: center;
+    border-radius: 20px;
+    cursor: pointer;
+    padding-top: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+    transition: 2s;
+    background: var(--color-white);
+}
+
+.content2:hover{
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+    0 3px rgba(0, 0, 0, 0.23);
+    transform: translate(0px, -8px);
+}
+
+.img2{
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+
+.p2{
+    text-align: center;
+    color: var(--color-dark);
+    padding-top: 0 8px;
+}
+
+h6{
+    font-size: 26px;
+    text-align: center;
+    color: var(--color-primary);
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+li{
+    padding-top: 5px;
+    color: #dce1eb;
+}
+
+.fa{
+    font-size: 26px;
+    transform: .4s;
+}
+
+.checked{
+    color: #ff9f43;
+}
+
+.fa:hover{
+    transform: scale(1.3);
+    transition: .2s;
+}
+
+button{
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+    width: 100%;
+    padding: 15px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    margin-top: 5px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.buy-1{ 
+    background: #3b3e6e
+}
+.buy-2{ 
+    background: #3b3e6e
+}
+.buy-3{ 
+    background: #3b3e6e
+}
+.buy-4{ 
+    background: #3b3e6e
+}
+.buy-5{ 
+    background: #3b3e6e
+}
+
+@media(max-width:1000px){
+    .content2{
+        width:100%;
+    }
+}
+
+@media(max-width:560px){
+    .content2{
+        width:70%;
+    }
+}
+
+@media(max-width: 768){
+    .content2{
+        width: 50%;
+    }
+}
+
+
+
 /* ============== MEDIA QUERIES ============== */
 @media screen and (max-width: 1200px){
     .container{
