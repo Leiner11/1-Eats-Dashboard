@@ -20,7 +20,7 @@ themeToggler.addEventListener('click', () => {
     themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
     themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
 })
-
+//DATA FOR TOP 5 PRODUCTS CHART//
 var barChartOptions = {
     series: [{
     data: [9, 5, 8, 10, 6]
@@ -70,6 +70,7 @@ var barChartOptions = {
 
 
 // Area Chart
+//Purchase and Sales Orders Data//
 
 var AreaChartOptions = {
     series: [{
