@@ -21,54 +21,75 @@ themeToggler.addEventListener('click', () => {
     themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
 })
 //DATA FOR TOP 5 PRODUCTS CHART//
-var barChartOptions = {
-    series: [{
-    data: [9, 5, 8, 10, 6]
-  }],
-    chart: {
-    type: 'bar',
-    height: 350,
-    toolbar: {
+// Assuming your PHP script returns data in the following format:
+// [{"name": "Chicken", "count": 9}, {"name": "Menudo", "count": 5},...]
+
+// Fetch data from your PHP script
+fetch('../php/topProduct.php')
+.then(response => {
+  // Clone the response to read it twice: once for JSON and once for text
+  const responseClone = response.clone();
+  return response.json().then(data => {
+      // Process the JSON data as before
+      const seriesData = data.map(item => ({
+          x: item.name,
+          y: item.count
+      }));
+
+      var barChartOptions = {
+          series: [{
+              data: seriesData
+          }],
+      chart: {
+        type: 'bar',
+        height: 350,
+        toolbar: {
+          show: false
+        },
+      },
+      colors: [
+        "#246dec",
+        "#cc3c43",
+        "#367952",
+        "#f5b74f",
+        "#4f35a1"
+      ],
+      plotOptions: {
+        bar: {
+          distributed: true,
+          borderRadius: 4,
+          horizontal: false,
+          columnwidth: '40%',
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      legend: {
         show: false
-    },
-  },
-  colors: [
-    "#246dec",
-    "#cc3c43",
-    "#367952",
-    "#f5b74f",
-    "#4f35a1"
-  ],
-  plotOptions: {
-    bar: {
-      distributed: true,
-      borderRadius: 4,
-      //borderRadiusApplication: 'end', 
-      horizontal: false,
-      columnwidth: '40%',
-    }
-  },
-  dataLabels: {
-    enabled: false
-  },
+      },
+      xaxis: {
+        categories: data.map(item => item.name),
+      },
+      yaxis: {
+        title: {
+          text: "Count"
+        }
+      },
+    };
 
-  legend:{
-    show: false
-  },
-  xaxis: {
-    categories: ["Chicken", "Menudo", "Bicol Express", "Lechon Kawali", "Softdrinks"],
-  },
-  yaxis: {
-    title: {
-        text: "Count"
-    }
-  },
-  };
-
-  var barChart = new ApexCharts(document.querySelector("#bar-chart"), barChartOptions);
-  barChart.render();
-
-
+    var barChart = new ApexCharts(document.querySelector("#bar-chart"), barChartOptions);
+    barChart.render();
+}).catch(error => {
+    // Handle JSON parsing error
+    console.error('Error parsing JSON from response:', error);
+    return responseClone.text().then(bodyText => {
+        // Log the raw response text
+        console.log('Received the following instead of valid JSON:', bodyText);
+    });
+});
+})
+.catch(error => console.error('Error fetching data:', error));
 // Area Chart
 //Purchase and Sales Orders Data//
 
