@@ -21,8 +21,6 @@ themeToggler.addEventListener('click', () => {
     themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
 })
 //DATA FOR TOP 5 PRODUCTS CHART//
-// Assuming your PHP script returns data in the following format:
-// [{"name": "Chicken", "count": 9}, {"name": "Menudo", "count": 5},...]
 
 // Fetch data from your PHP script
 fetch('../php/topProduct.php')
@@ -90,52 +88,72 @@ fetch('../php/topProduct.php')
 });
 })
 .catch(error => console.error('Error fetching data:', error));
-// Area Chart
-//Purchase and Sales Orders Data//
 
-var AreaChartOptions = {
-    series: [{
-    name: 'Purchase Orders',
-    data: [31, 40, 28, 51, 42, 109, 100]
-  }, {
-    name: 'Sales Orders',
-    data: [11, 32, 45, 32, 34, 52, 41]
-  }],
-    chart: {
-    height: 350,
-    type: 'area',
-    toolbar: {
-        show: false,
-    },
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  stroke: {
-    curve: 'smooth'
-  },
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-  markers: {
-    size: 0
-  },
-  yaxis: [
-    {
-      title: {
-        text: 'Purchase Orders',
-      },
-    },
-    {
-      opposite: true,
-      title: {
-        text: 'Sales Orders',
-      },
-    },
-  ],
-  tooltip: {
-    shared: true,
-    intersect: false,
-  }
-  };
+// Define chartData globally
+var chartData = [];
 
-  var areaChart = new ApexCharts(document.querySelector("#area-chart"), AreaChartOptions);
-  areaChart.render();
+// Function to fetch data from your PHP script
+function fetchData() {
+  fetch('../php/salesSixMonths.php')
+    .then(response => response.json()) // Parse the response as JSON
+    .then(data => {
+            // Assuming the PHP script echoes JSON-encoded data
+            chartData = data;
+            // Now that we have the data, update the chart options
+            updateChartOptions();
+        })
+       .catch(error => console.error('Error fetching data:', error));
+}
+
+// Function to update chart options with fetched data
+function updateChartOptions() {
+    var AreaChartOptions = {
+        series: [{
+            name: 'Purchase Orders',
+            data: chartData // Use the dynamic data
+        }, {
+            name: 'Sales Orders',
+            data: chartData // Use the dynamic data
+        }],
+        chart: {
+            height: 350,
+            type: 'area',
+            toolbar: {
+                show: false,
+            },
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        stroke: {
+            curve: 'smooth'
+        },
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"], // Ensure this matches the number of data points
+        markers: {
+            size: 0
+        },
+        yaxis: [
+            {
+                title: {
+                    text: 'Purchase Orders',
+                },
+            },
+            {
+                opposite: true,
+                title: {
+                    text: 'Sales Orders',
+                },
+            },
+        ],
+        tooltip: {
+            shared: true,
+            intersect: false,
+        }
+    };
+
+    var areaChart = new ApexCharts(document.querySelector("#area-chart"), AreaChartOptions);
+    areaChart.render();
+}
+
+// Call fetchData to start the process
+fetchData();
