@@ -20,6 +20,18 @@
                .catch(error => console.error('Error:', error));
         });
     </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('../php/totalOrders.php')
+           .then(response => response.json())
+           .then(data => {
+                document.querySelector('#total-order h1').textContent = data.totalCompleteOrders;
+            })
+           .catch(error => console.error('Error:', error));
+    });
+    </script>
+
             <script>
                 function fetchTotalSales() {
                     fetch('../php/totalSales.php')
@@ -133,9 +145,9 @@
                 <div class="income">
                     <span class="material-symbols-outlined">stacked_line_chart</span>
                     <div class="middle">
-                        <div class="left">
+                        <div id="total-order" class="left">
                             <h3>Total No. of Orders</h3>
-                            <h1></h1> <!-- This will be dynamically filled -->
+                            <h1 id="total-order">#</h1>
                         </div>
                         <div class="progress">
                             <svg>
