@@ -10,6 +10,7 @@
     <!--STYLESHEET-->
     <link rel="stylesheet" href="./index.css">
 
+    <!--SCRIPTS FOR TOTAL ACTIVE ORDERS, TOTAL COMPLETE ORDERS, AND TOTAL SALES-->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             fetch('../php/statusQuery.php')
@@ -31,7 +32,6 @@
            .catch(error => console.error('Error:', error));
     });
     </script>
-
             <script>
                 function fetchTotalSales() {
                     fetch('../php/totalSales.php')
@@ -40,8 +40,7 @@
                             updateTotalSalesHTML(data.total_sales);
                         })
                        .catch(error => console.error('Error fetching total sales:', error));
-                }
-        
+                }   
                 function updateTotalSalesHTML(totalSales) {
                     const totalSalesElement = document.getElementById('total-sales');
                     const progressElement = document.getElementById('progress-percentage');
@@ -51,11 +50,11 @@
                     const progressPercentage = Math.round((totalSales / 9820) * 100);
                     progressElement.textContent = `${progressPercentage}%`;
                 }
-        
                 document.addEventListener('DOMContentLoaded', () => {
                     fetchTotalSales();
                 });
             </script>
+    <!--SCRIPTS FOR TOTAL ACTIVE ORDERS, TOTAL COMPLETE ORDERS, AND TOTAL SALES-->
 
 </head>
 <body>
@@ -123,6 +122,7 @@
             </div>
 
             <div class="insights">
+            <!----- START OF ACTIVE ORDERS ----->
                 <div class="expenses">
                     <span class="material-symbols-outlined">bar_chart</span>
                     <div class="middle">
@@ -143,6 +143,7 @@
                 </div>
                 <!----- END OF ACTIVE ORDERS ----->
 
+                <!----- START OF TOTAL NO. OF ORDERS ----->
                 <div class="income">
                     <span class="material-symbols-outlined">stacked_line_chart</span>
                     <div class="middle">
@@ -161,8 +162,9 @@
                     </div>
                     <small class="text-muted">Last 24 Hours</small>
                 </div>
-                <!----- END OF NO. OF ORDERS ----->
+                <!----- END OF TOTAL NO. OF ORDERS ----->
 
+                <!----- START OF TOTAL SALES ----->
                 <div class="sales">
                     <span class="material-symbols-outlined">analytics</span>
                     <div class="middle">
@@ -181,7 +183,7 @@
                     </div>
                     <small class="text-muted">Last 24 Hours</small>
                 </div>
-                <!----- END OF SALES ----->
+                <!----- END OF TOTAL SALES ----->
 
                 <!-- Other sections... -->
             </div>
