@@ -118,6 +118,8 @@
       </aside>
 
       <!----- END OF ASIDE BAR ----->
+      
+      <!----- END OF ASIDE BAR ----->
 
       <main>
         <h1>Dashboard</h1>
