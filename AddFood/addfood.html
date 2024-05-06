@@ -1,40 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Food Item</title>
-    <link rel="stylesheet" href="addfood.css">
-</head>
-<body>
+    <link rel="stylesheet" href="addfood.css" />
+  </head>
+  <style>
+    .center-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+  <body>
     <div class="add-container">
-        <h2>Add Food Item</h2>
-        <form action="#" method="post">
-            <label for="foodName">Food Name:</label>
-            <input type="text" id="foodName" name="foodName" placeholder="Enter food name" required>
-            
-            <label for="category">Category:</label>
-            <select id="category" name="category" required>
-                <option value="">Select Category</option>
-                <option value="breakfast">Breakfast</option>
-                <option value="lunch">Lunch</option>
-                <option value="dinner">Dinner</option>
-                <option value="snack">Snack</option>
-                <option value="dessert">Dessert</option>
-                <option value="beverages">Beverages</option>
-            </select>
-            
-            <label for="Price">Price: [Pesos]</label>
-            <input type="number" id="Price" name="Price" placeholder="Enter the Price" required>
-            
-            <label for="isVegan">Is Vegan?</label>
-            <select id="category" name="category" required>
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
-            </select>
-            
-            <button type="submit">Add Food</button>
-        </form>
+      <h2>Manage Inventory</h2>
+      <form action="#" method="post">
+        <label for="foodName">Food Name:</label>
+        <input
+          type="text"
+          id="foodName"
+          name="foodName"
+          placeholder="Enter food name"
+          required
+        />
+
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+          <option value="">Select Category</option>
+          <option value="breakfast">In-Stock</option>
+          <option value="lunch">Out Of Stock</option>
+        </select>
+
+        <label for="Price">Price: [Pesos]</label>
+        <input
+          type="number"
+          id="Price"
+          name="Price"
+          placeholder="Enter the Price"
+          required
+        />
+
+        <label for="Price">Inventory Stock: [How many in-stock]</label>
+        <input
+          type="number"
+          id="Inventory"
+          name="Inventory"
+          placeholder="Enter quantity"
+          required
+        />
+
+        <br />
+
+        <button type="submit">Add Inventory</button>
+      </form>
+
+      <br />
+
+      <div class="center-container">
+        <a href="../Dashboard/index.php">
+          <button type="button">GO BACK TO HOME</button>
+        </a>
+      </div>
     </div>
-</body>
+  </body>
 </html>

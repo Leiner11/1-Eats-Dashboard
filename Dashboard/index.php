@@ -106,11 +106,11 @@
                     <span class="material-symbols-outlined">settings</span>
                     <h3>Settings</h3>
                 </a>-->
-          <a href="#">
+          <a href="../AddFood/addfood.html">
             <span class="material-symbols-outlined">add</span>
             <h3>Manage Inventory</h3>
           </a>
-          <a href="#">
+          <a href="../Login/login.html">
             <span class="material-symbols-outlined">logout</span>
             <h3>Logout</h3>
           </a>
