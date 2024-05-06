@@ -94,33 +94,34 @@ fetch("../php/topProduct.php")
   })
   .catch((error) => console.error("Error fetching data:", error));
 
-// Define chartData globally
-var chartData = [];
+// Declare areaChart globally
+var areaChart;
 
-// Function to fetch data from your PHP script
 function fetchData() {
   fetch("../php/salesSixMonths.php")
     .then((response) => response.json()) // Parse the response as JSON
     .then((data) => {
-      // Assuming the PHP script echoes JSON-encoded data
-      chartData = data;
+      // Correctly assign the fetched data to variables
+      const purchaseOrders = data.purchase_orders;
+      const salesOrders = data.sales_orders;
+
       // Now that we have the data, update the chart options
-      updateChartOptions();
+      updateChartOptions(purchaseOrders, salesOrders);
     })
     .catch((error) => console.error("Error fetching data:", error));
 }
 
 // Function to update chart options with fetched data
-function updateChartOptions() {
+function updateChartOptions(purchaseOrders, salesOrders) {
   var AreaChartOptions = {
     series: [
       {
         name: "Purchase Orders",
-        data: chartData, // Use the dynamic data
+        data: purchaseOrders, // Use the dynamic data
       },
       {
         name: "Sales Orders",
-        data: chartData, // Use the dynamic data
+        data: salesOrders, // Use the dynamic data
       },
     ],
     chart: {
@@ -134,7 +135,7 @@ function updateChartOptions() {
       enabled: false,
     },
     stroke: {
-      curve: "smooth",
+      curve: "straight",
     },
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"], // Ensure this matches the number of data points
     markers: {
@@ -159,11 +160,17 @@ function updateChartOptions() {
     },
   };
 
-  var areaChart = new ApexCharts(
-    document.querySelector("#area-chart"),
-    AreaChartOptions
-  );
-  areaChart.render();
+  // Initialize the chart only once
+  if (!areaChart) {
+    areaChart = new ApexCharts(
+      document.querySelector("#area-chart"),
+      AreaChartOptions
+    );
+    areaChart.render();
+  } else {
+    // Update the chart with new data
+    areaChart.updateSeries(AreaChartOptions.series);
+  }
 }
 
 // Call fetchData to start the process
