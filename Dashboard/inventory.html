@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1-Eats 1-Skul</title>
+    <!--METERIAL CDN-->
+    <!--    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <!--STYLESHEET-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./index.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        function updateInventory() {
+          fetch("../php/inventory.php")
+            .then((response) => response.json())
+            .then((data) => {
+              data.forEach((item) => {
+                // Check if the item already exists in the DOM
+                const existingItem = document.querySelector(
+                  `.content2[data-id="${item.id}"]`
+                );
+                if (existingItem) {
+                  // If the item exists, do nothing
+                  return;
+                }
+
+                // Create a new div for each item
+                const productDiv = document.createElement("div");
+                productDiv.className = "content2";
+                productDiv.dataset.id = item.id; // Add a unique identifier to the div
+
+                // Populate the div with the item's details
+                const h3 = document.createElement("h3");
+                h3.textContent = item.product_name;
+                // Enlarge the font size of the product name
+                h3.style.fontSize = "24px"; // Adjust the font size as needed
+                productDiv.appendChild(h3);
+
+                // Removed the placeholder text
+                // const p = document.createElement("p");
+                // p.className = "p2";
+                // p.textContent = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
+                // productDiv.appendChild(p);
+
+                const h6 = document.createElement("h6");
+                h6.textContent = item.inventory_status; // Display inventory_status instead of price
+                productDiv.appendChild(h6);
+
+                // Removed the star feature by omitting the <ul> element
+
+                const button = document.createElement("button");
+                button.className = `buy-${item.id}`;
+                // Set the button text to the stock_status
+                button.textContent = item.stock_status; // Use stock_status as the button text
+                productDiv.appendChild(button);
+
+                // Append the new div to the gallery
+                document.querySelector(".gallery2").appendChild(productDiv);
+              });
+            })
+            .catch((error) => console.error("Error:", error));
+        }
+
+        // Call the updateInventory function initially and periodically
+        updateInventory();
+        setInterval(updateInventory, 5000); // Update every 5 seconds
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <aside>
+        <div class="top">
+          <div class="logo">
+            <a href="index.php">
+              <img src="./images/logo.png" />
+            </a>
+            <a href="index.php">
+              <h2>1EATS<span class="danger"> 1SKUL</span></h2>
+            </a>
+          </div>
+          <div class="close" id="close-btn">
+            <span class="material-symbols-outlined">close</span>
+          </div>
+        </div>
+
+        <div class="sidebar">
+          <a href="index.php">
+            <span class="material-symbols-outlined">grid_view</span>
+            <h3>Dashboard</h3>
+          </a>
+          <!--<a href="#">
+                    <span class="material-symbols-outlined">mail_outline</span>
+                    <h3>Messages</h3>
+                    <span class="message-count">26</span>
+                </a>-->
+          <a href="orders.php">
+            <span class="material-symbols-outlined">receipt_long</span>
+            <h3>Orders</h3>
+          </a>
+          <a href="analytics.html">
+            <span class="material-symbols-outlined">insights</span>
+            <h3>Analytics</h3>
+          </a>
+          <a href="#" class="active">
+            <span class="material-symbols-outlined">inventory</span>
+            <h3>Inventory</h3>
+          </a>
+          <!--<a href="#">
+                    <span class="material-symbols-outlined">settings</span>
+                    <h3>Settings</h3>
+                </a>-->
+          <a href="#">
+            <span class="material-symbols-outlined">add</span>
+            <h3>Manage Inventory</h3>
+          </a>
+          <a href="#">
+            <span class="material-symbols-outlined">logout</span>
+            <h3>Logout</h3>
+          </a>
+        </div>
+      </aside>
+
+      <!----- END OF ASIDE BAR ----->
+
+      <main>
+        <h1>Inventory</h1>
+        <div class="insights2">
+          <div class="gallery2"></div>
+        </div>
+      </main>
+      <!------------------- END OF MAIN --------------------->
+
+      <div class="right">
+        <div class="top">
+          <button id="menu-btn">
+            <span class="material-symbols-outlined">menu</span>
+          </button>
+          <div class="theme-toggler">
+            <span class="material-symbols-outlined active">light_mode</span>
+            <span class="material-symbols-outlined">dark_mode</span>
+          </div>
+          <div class="profile">
+            <div class="info">
+              <p>Good day, <b>User</b></p>
+              <small class="text-muted">Admin</small>
+            </div>
+            <div class="profile-photo">
+              <img src="./images/profile-1.jpg" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./order.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>

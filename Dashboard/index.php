@@ -98,9 +98,9 @@
             <span class="material-symbols-outlined">insights</span>
             <h3>Analytics</h3>
           </a>
-          <a href="products.html">
+          <a href="inventory.html">
             <span class="material-symbols-outlined">inventory</span>
-            <h3>Products</h3>
+            <h3>Inventory</h3>
           </a>
           <!--<a href="#">
                     <span class="material-symbols-outlined">settings</span>
@@ -108,7 +108,7 @@
                 </a>-->
           <a href="#">
             <span class="material-symbols-outlined">add</span>
-            <h3>Add Product</h3>
+            <h3>Manage Inventory</h3>
           </a>
           <a href="#">
             <span class="material-symbols-outlined">logout</span>
@@ -325,7 +325,7 @@
           <div class="item add-product">
             <div>
               <span class="material-symbols-outlined">add</span>
-              <h3>Add Product</h3>
+              <h3>Manage Inventory</h3>
             </div>
           </div>
         </div>
