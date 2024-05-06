@@ -3,22 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Food Item</title>
-    <link rel="stylesheet" href="admin.css" />
+    <title>Place New Order</title>
+    <link rel="stylesheet" href="newOrder.css" />
   </head>
   <body>
     <div class="add-container">
       <h2>Place New Order</h2>
-      <form action="#" method="post">
-        <label for="foodName">Food Name:</label>
-        <input
-          type="text"
-          id="foodName"
-          name="foodName"
-          placeholder="Enter food name"
-          required
-        />
-
+      <form action="../php/placeNewOrder.php" method="post">
+      <label for="selectFood">Select Food:</label>
+        <?php include ("../php/getProductName.php");?>
         <label for="orderFor">Order for:</label>
         <input
           type="text"
