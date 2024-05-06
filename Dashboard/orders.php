@@ -15,10 +15,10 @@
         <aside>
             <div class="top">
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="index.php">
                         <img src="./images/logo.png">
                     </a>
-                    <a href="index.html">
+                    <a href="index.php">
                         <h2>1EATS<span class="danger"> 1SKUL</span></h2>
                     </a>
                 </div>
@@ -28,7 +28,7 @@
             </div>
 
             <div class="sidebar">
-                <a href="index.html">
+                <a href="index.php">
                     <span class="material-symbols-outlined">grid_view</span>
                     <h3>Dashboard</h3>
                 </a>
@@ -45,9 +45,9 @@
                     <span class="material-symbols-outlined">insights</span>
                     <h3>Analytics</h3>
                 </a>
-                <a href="products.html">
+                <a href="inventory.html">
                     <span class="material-symbols-outlined">inventory</span>
-                    <h3>Products</h3>
+                    <h3>Inventory</h3>
                 </a>
                 <!--<a href="#">
                     <span class="material-symbols-outlined">settings</span>
@@ -55,7 +55,7 @@
                 </a>-->
                 <a href="#">
                     <span class="material-symbols-outlined">add</span>
-                    <h3>Add Product</h3>
+                    <h3>Manage Inventory</h3>
                 </a>
                 <a href="#">
                     <span class="material-symbols-outlined">logout</span>
@@ -71,29 +71,26 @@
 
             <!--------------- END OF INSIGHTS --------------->
 
-            <div class="recent-orders2">
+            <div class="recent-orders">
+                <h2>Recent Orders</h2>
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Product Name</th>
-                            <th>Product Number</th>
-                            <th>Payment</th>
-                            <th>Status</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        <tbody>
-                            <!--<tr>
-                                <td>Adobong Manakk</td>
-                                <td>85631</td>
-                                <td>Due</td>
-                                <td class="warning">Pending</td>
-                                <td class="primary">Details</td>
-                            </tr>
-                        -->
-                    </thead>
+                  <thead>
+                    <tr>
+                      <th>Order ID</th>
+                      <th>Customer Name</th>
+                      <th>Order Date</th>
+                      <th>Status</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php 
+                    include("../php/Config.php");
+                    include("../php/recentOrders.php");
+                    ?>
+                  </tbody>
                 </table>
-            </div>
+              </div>
         </main>
         <!------------------- END OF MAIN --------------------->
 
@@ -108,7 +105,7 @@
                 </div>
                 <div class="profile">
                     <div class="info">
-                        <p>Hey, <b>Miyaks</b></p>
+                        <p>Good day, <b>User</b></p>
                         <small class="text-muted">Admin</small>
                     </div>
                     <div class="profile-photo">

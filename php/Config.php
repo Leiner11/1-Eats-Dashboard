@@ -3,7 +3,7 @@
 define('host', 'localhost'); 
 define('username', 'admin_1eats'); 
 define('password', 'admin_1eatsat1skul'); 
-define('dbname', 'users_dashboard'); 
+define('dbname', 'usersdashboard'); 
 
 // Create a new database connection
 $conn = new mysqli(host, username, password, dbname);

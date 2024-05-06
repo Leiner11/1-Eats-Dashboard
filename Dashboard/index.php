@@ -70,6 +70,7 @@
             <a href="index.php">
               <img src="./images/logo.png" />
             </a>
+
             <a href="index.php">
               <h2>1EATS<span class="danger"> 1SKUL</span></h2>
             </a>
@@ -80,7 +81,7 @@
         </div>
 
         <div class="sidebar">
-          <a href="index.php">
+          <a href="#" class="active">
             <span class="material-symbols-outlined">grid_view</span>
             <h3>Dashboard</h3>
           </a>
@@ -93,7 +94,7 @@
             <span class="material-symbols-outlined">receipt_long</span>
             <h3>Orders</h3>
           </a>
-          <a href="#" class="active">
+          <a href="analytics.html">
             <span class="material-symbols-outlined">insights</span>
             <h3>Analytics</h3>
           </a>
@@ -119,7 +120,7 @@
       <!----- END OF ASIDE BAR ----->
 
       <main>
-        <h1>Analytics</h1>
+        <h1>Dashboard</h1>
 
         <div class="date">
           <input type="date" />
@@ -146,6 +147,7 @@
             <small class="text-muted">TODAY</small>
           </div>
           <!----- END OF ACTIVE ORDERS ----->
+
           <!----- START OF TOTAL NO. OF ORDERS ----->
           <div class="income">
             <span class="material-symbols-outlined">stacked_line_chart</span>
@@ -166,6 +168,7 @@
             <small class="text-muted">Last 24 Hours</small>
           </div>
           <!----- END OF TOTAL NO. OF ORDERS ----->
+
           <!----- START OF TOTAL SALES ----->
           <div class="sales">
             <span class="material-symbols-outlined">analytics</span>
@@ -186,21 +189,32 @@
             <small class="text-muted">Last 24 Hours</small>
           </div>
           <!----- END OF TOTAL SALES ----->
+
+          <!-- Other sections... -->
         </div>
-
-        <div class="charts">
-          <div class="charts-card">
-            <p class="chart-title">Top 5 Products</p>
-            <div id="bar-chart"></div>
-          </div>
-
-          <div class="charts-card">
-            <p class="chart-title">Purchase and Sales Statistics</p>
-            <div id="area-chart"></div>
-          </div>
+        <!--------------- END OF INSIGHTS --------------->
+        <div class="recent-orders">
+          <h2>Recent Orders</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer Name</th>
+                <th>Order Date</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php 
+              include("../php/Config.php");
+              include("../php/recentOrders.php");
+              ?>
+            </tbody>
+          </table>
         </div>
       </main>
-      <!--------------- END OF INSIGHTS --------------->
+      <!------------------- END OF MAIN --------------------->
 
       <div class="right">
         <div class="top">
@@ -222,6 +236,48 @@
           </div>
         </div>
         <!----- END OF TOP ------>
+        <div class="recent-updates">
+          <h2>Recent Updates</h2>
+          <div class="updates">
+            <div class="update">
+              <div class="profile-photo">
+                <img src="./images/profile-2.jpg" />
+              </div>
+              <div class="message">
+                <p>
+                  <b>Joshua Decoy Sarmiento</b> received his order of Adobong
+                  Manakk
+                </p>
+                <small class="text-muted">2 minutes ago</small>
+              </div>
+            </div>
+            <div class="update">
+              <div class="profile-photo">
+                <img src="./images/profile-3.jpg" />
+              </div>
+              <div class="message">
+                <p>
+                  <b>Raven Habibi Singhid</b> received his order of Adobong
+                  Manakk
+                </p>
+                <small class="text-muted">2 minutes ago</small>
+              </div>
+            </div>
+            <div class="update">
+              <div class="profile-photo">
+                <img src="./images/profile-4.jpg" />
+              </div>
+              <div class="message">
+                <p>
+                  <b>Princess Reniel Ariado</b> received his order of Adobong
+                  Manakk
+                </p>
+                <small class="text-muted">2 minutes ago</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--------------- END OF RECENT UPDATES --------------->
         <div class="sales-analytics">
           <h2>Sales Analytics</h2>
           <div class="item online">
@@ -275,10 +331,7 @@
         </div>
       </div>
     </div>
-    <!-- Scripts -->
-    <!-- Apex Charts-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.49.0/apexcharts.min.js"></script>
-    <script src="./scripts.js"></script>
+
     <script src="./order.js"></script>
     <script src="./index.js"></script>
   </body>
