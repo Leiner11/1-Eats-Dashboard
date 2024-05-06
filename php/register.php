@@ -13,14 +13,14 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-    $sql = "INSERT INTO users (name, email, pwd) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
 
 $stmt->bind_param("sss", $name, $email, $hashedPassword);
 
 if ($stmt->execute()) {
-    header("Location: /1-Eats-Dashboard/Dashboard/index.html");
+    header("Location: /1-Eats-Dashboard/Dashboard/index.php");
     exit;
 } else {
     echo "Error: " . $stmt->error;
