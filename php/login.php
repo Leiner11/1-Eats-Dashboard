@@ -1,14 +1,18 @@
 <?php
 include("./Config.php");
+session_start();
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-// Prepare and bind
 $stmt = $conn->prepare("SELECT * FROM users WHERE email =?");
 $stmt->bind_param("s", $email);
 
-// Execute the statement
 $stmt->execute();
 
 // Get the result
@@ -18,11 +22,12 @@ $user = $result->fetch_assoc();
 // Check if user exists and password matches
 if ($user && password_verify($password, $user['password'])) {
     // Password is correct, start a session
-    session_start();
     $_SESSION['loggedin'] = true;
     $_SESSION['id'] = $user['id'];
     $_SESSION['name'] = $user['name'];
-    header("Location: ../Dashboard/index.php");
+    echo "Username: ". $_SESSION['name'];
+
+    header("Location:../Dashboard/index.php");
 } else {
     echo "Invalid email or password.";
 }

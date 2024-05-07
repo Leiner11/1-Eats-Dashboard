@@ -61,10 +61,11 @@
                     <span class="material-symbols-outlined">add</span>
                     <h3>Manage Inventory</h3>
                 </a>
-                <a href="../Login/login.html">
-                    <span class="material-symbols-outlined">logout</span>
-                    <h3>Logout</h3>
-                </a>
+                <a href="../php/logout.php">
+            <span class="material-symbols-outlined">logout</span>
+            <h3>Logout</h3>
+          </a>
+
             </div>
         </aside>
 

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +16,6 @@
     />
     <!--STYLESHEET-->
     <link rel="stylesheet" href="./index.css" />
-
     <!--SCRIPTS FOR TOTAL ACTIVE ORDERS, TOTAL COMPLETE ORDERS, AND TOTAL SALES-->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -114,7 +117,7 @@
             <span class="material-symbols-outlined">add</span>
             <h3>Manage Inventory</h3>
           </a>
-          <a href="../Login/login.html">
+          <a href="../php/logout.php">
             <span class="material-symbols-outlined">logout</span>
             <h3>Logout</h3>
           </a>
@@ -230,10 +233,15 @@
             <span class="material-symbols-outlined">dark_mode</span>
           </div>
           <div class="profile">
-            <div class="info">
-              <p>Good day, <b>User</b></p>
-              <small class="text-muted">Admin</small>
-            </div>
+          <div class="info">
+          <?php 
+          if (isset($_SESSION['name'])):?>
+        <p>Good day, <b><?php echo $_SESSION['name'];?></b></p>
+        <small class="text-muted">Admin</small>
+          <?php else:?>
+              <p>Please log in.</p>
+          <?php endif;?>
+</div>
             <div class="profile-photo">
               <img src="" />
             </div>
