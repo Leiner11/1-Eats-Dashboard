@@ -245,36 +245,33 @@
           <div class="updates">
             <div class="update">
               <div class="profile-photo">
-                <img src="./images/profile-2.jpg" />
+                <img src="" />
               </div>
               <div class="message">
                 <p>
-                  <b>Joshua Decoy Sarmiento</b> received his order of Adobong
-                  Manakk
+                  <b>Customer1</b> has received the order.
                 </p>
                 <small class="text-muted">2 minutes ago</small>
               </div>
             </div>
             <div class="update">
               <div class="profile-photo">
-                <img src="./images/profile-3.jpg" />
+                <img src="" />
               </div>
               <div class="message">
                 <p>
-                  <b>Raven Habibi Singhid</b> received his order of Adobong
-                  Manakk
+                <b>Customer2</b> has received the order.
                 </p>
                 <small class="text-muted">2 minutes ago</small>
               </div>
             </div>
             <div class="update">
               <div class="profile-photo">
-                <img src="./images/profile-4.jpg" />
+                <img src="" />
               </div>
               <div class="message">
                 <p>
-                  <b>Princess Reniel Ariado</b> received his order of Adobong
-                  Manakk
+                <b>Customer3</b> has received the order.
                 </p>
                 <small class="text-muted">2 minutes ago</small>
               </div>
