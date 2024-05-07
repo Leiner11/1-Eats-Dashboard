@@ -231,7 +231,7 @@
               <small class="text-muted">Admin</small>
             </div>
             <div class="profile-photo">
-              <img src="./images/profile-1.jpg" />
+              <img src="" />
             </div>
           </div>
         </div>
@@ -321,13 +321,14 @@
               <h3>849</h3>
             </div>
           </div>
-
+          <a href="../AddFood/addfood.html">
           <div class="item add-product">
             <div>
               <span class="material-symbols-outlined">add</span>
               <h3>Manage Inventory</h3>
             </div>
-          </div>
+        </div>
+        </a>
         </div>
       </div>
     </div>
