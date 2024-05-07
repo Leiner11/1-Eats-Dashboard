@@ -81,6 +81,10 @@
         </div>
 
         <div class="sidebar">
+        <a href="../Controller-UI/controller.php">
+            <span class="material-symbols-outlined">toggle_on</span>
+            <h3>Prototype Controller</h3>
+          </a>
           <a href="#" class="active">
             <span class="material-symbols-outlined">grid_view</span>
             <h3>Dashboard</h3>
@@ -144,7 +148,7 @@
                 </div>
               </div>
             </div>
-            <small class="text-muted">TODAY</small>
+            <small class="text-muted">Today</small>
           </div>
           <!----- END OF ACTIVE ORDERS ----->
 
