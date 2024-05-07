@@ -109,7 +109,7 @@
                         <small class="text-muted">Admin</small>
                     </div>
                     <div class="profile-photo">
-                        <img src="./images/profile-1.jpg">
+                        <img src="">
                     </div>
                 </div>
             </div>
