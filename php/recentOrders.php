@@ -4,11 +4,14 @@
 if (isset($_SESSION['stallname'])) {
     $loggedInStallName = $_SESSION['stallname'];
 
-    $sql = "SELECT order_id, customer_name, order_date, status FROM orders WHERE stallname =? ORDER BY order_date DESC";
+    // Calculate the date and time 24 hours ago
+    $date24HoursAgo = date('Y-m-d H:i:s', strtotime('-24 hours'));
+
+    $sql = "SELECT order_id, customer_name, order_date, status FROM orders WHERE stallname =? AND order_date >=? ORDER BY order_date DESC";
 
     $stmt = mysqli_prepare($conn, $sql);
 
-    mysqli_stmt_bind_param($stmt, "s", $loggedInStallName);
+    mysqli_stmt_bind_param($stmt, "ss", $loggedInStallName, $date24HoursAgo);
 
     mysqli_stmt_execute($stmt);
 

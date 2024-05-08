@@ -81,7 +81,7 @@ session_start();
             <!--------------- END OF INSIGHTS --------------->
 
             <div class="recent-orders">
-                <h2>Recent Orders</h2>
+                <h2>All Orders</h2>
                 <table>
                   <thead>
                     <tr>
@@ -95,7 +95,7 @@ session_start();
                   <tbody>
                     <?php 
                     include("../php/Config.php");
-                    include("../php/recentOrders.php");
+                    include("../php/allOrders.php");
                     ?>
                   </tbody>
                 </table>
