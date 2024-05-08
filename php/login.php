@@ -26,11 +26,13 @@ if ($user && password_verify($password, $user['password'])) {
     $_SESSION['stallname'] = $user['stallname'];
     
     echo "Username: ". $_SESSION['name'];
-
     header("Location:../Dashboard/index.php");
 } else {
-    echo "Invalid email or password.";
+    // Set a session variable indicating there was a login error
+    $_SESSION['login_error'] = true;
+    header("Location:../Login/loginPage.php");
 }
+
 $stmt->close();
 $conn->close();
 ?>

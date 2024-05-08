@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +32,18 @@
             <div class="input-box">
                 <input type="password" class="input-field" id="password_confirmation" name="password_confirmation" placeholder="Re-Enter Password" required>
             </div>
+            <?php
+            if (isset($_SESSION['error_message'])) {
+                echo '<div class="notification">'. $_SESSION['error_message']. '</div>';
+                unset($_SESSION['error_message']); // Clear the error message
+            }
+           ?>
+            <?php
+            if (isset($_SESSION['unmatched_message'])) {
+                echo '<div class="notification">'. $_SESSION['unmatched_message']. '</div>';
+                unset($_SESSION['unmatched_message']); // Clear the error message
+            }
+           ?>
             <div class="accept">
                 <section>
                     <input type="checkbox" id="check" required>
@@ -38,7 +54,7 @@
                 <label for="submit">Register</label>
             </div>
             <div class="sign-up-link">
-                <p>Already have an account? <a href="../Login/login.html">Login</a></p>
+                <p>Already have an account? <a href="../Login/loginPage.php">Login</a></p>
             </div>
         </div>
     </form>

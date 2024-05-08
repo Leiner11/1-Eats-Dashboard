@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,11 +35,19 @@
             required
           />
         </div>
+        <?php 
+          if (isset($_SESSION['login_error']) && $_SESSION['login_error']):?>
+              <div class="error-message">Invalid email or password.</div>
+              <?php 
+              // Unset the 'login_error' session variable after displaying the message
+              unset($_SESSION['login_error']); 
+            ?>
+          <?php endif;?>
         <div class="forgot">
-          <section>
+          <!--<section>
             <input type="checkbox" id="check" />
             <label for="check">Remember me</label>
-          </section>
+          </section>!-->
           <section>
             <a href="#">Forgot password</a>
           </section>

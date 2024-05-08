@@ -1,10 +1,10 @@
 <?php
 session_start();
-/*if (!isset($_SESSION['name'])) {
+if (!isset($_SESSION['name'])) {
     // Redirect to the login page
-    header("Location:../Login/login.html");
+    header("Location:../Login/loginPage.php");
     exit; // Ensure no code is executed after the redirect
-}*/
+}
 ?>
 
 <!DOCTYPE html>

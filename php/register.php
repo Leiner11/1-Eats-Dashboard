@@ -20,14 +20,30 @@ $result = $stmt->get_result();
 $count = $result->fetch_row()[0];
 
 if ($count > 0) {
-    echo "Email already exists.";
+    $_SESSION['error_message'] = 'Error: Email already exists.';
+    header("Location:../Register/register.php");
+    exit;
+}
+
+// Simplified password validation: only check for minimum length
+$minPasswordLength = 8; // Minimum password length
+
+if (strlen($password) < $minPasswordLength) {
+    $_SESSION['error_message'] = 'Password should be at least 8 characters long. Please try again.';
+    header("Location:../Register/register.php");
+    exit;
+}
+
+if ($password!== $password_confirmation) {
+    $_SESSION['unmatched_message'] = 'Error: Passwords do not match.';
+    header("Location:../Register/register.php");
     exit;
 }
 
 $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
 if ($conn->connect_error) {
-    die("Connection failed: ". $conn->connect_error);
+    die("Error: Connection failed: ". $conn->connect_error);
 }
 
 $sql = "INSERT INTO users (name, email, password, stallname) VALUES (?,?,?,?)";
@@ -51,7 +67,7 @@ if ($stmt->execute()) {
 
     $_SESSION['registration_success'] = true;
 
-    header("Location: /1-Eats-Dashboard/Login/login.html");
+    header("Location: /1-Eats-Dashboard/Login/loginPage.php");
     exit;
 } else {
     echo "Error: ". $stmt->error;
