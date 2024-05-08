@@ -1,9 +1,17 @@
 <?php
+session_start();
+
 include("Config.php");
 
-// Query to get product names
-$sql = "SELECT name FROM products";
-$result = $conn->query($sql);
+$loggedInStallName = $_SESSION['stallname'];
+
+// Query to get product names for the logged-in user's stall
+$sql = "SELECT name FROM products WHERE stallname =?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $loggedInStallName); // "s" indicates the parameter type is string
+
+$stmt->execute();
+$result = $stmt->get_result();
 
 // Start the select tag
 echo '<select id="category" name="category" required>';
@@ -18,5 +26,6 @@ while ($row = $result->fetch_assoc()) {
 
 echo '</select>';
 
+$stmt->close();
 $conn->close();
 ?>
