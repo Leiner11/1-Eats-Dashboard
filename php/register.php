@@ -6,7 +6,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
 $name = $_POST['name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
@@ -36,10 +35,22 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssss", $name, $email, $hashedPassword, $stallname);
 
 if ($stmt->execute()) {
-    // Optionally, set a session variable indicating successful registration
+    // Check if the stallname already exists in the stalls table
+    $checkStallNameStmt = $conn->prepare("SELECT COUNT(*) FROM stalls WHERE name =?");
+    $checkStallNameStmt->bind_param("s", $stallname);
+    $checkStallNameStmt->execute();
+    $checkResult = $checkStallNameStmt->get_result();
+    $checkCount = $checkResult->fetch_row()[0];
+
+    if ($checkCount == 0) {
+        // If the stallname does not exist, insert it into the stalls table
+        $insertStallStmt = $conn->prepare("INSERT INTO stalls (name) VALUES (?)");
+        $insertStallStmt->bind_param("s", $stallname);
+        $insertStallStmt->execute();
+    }
+
     $_SESSION['registration_success'] = true;
 
-    // Redirect the user to the login page
     header("Location: /1-Eats-Dashboard/Login/login.html");
     exit;
 } else {
