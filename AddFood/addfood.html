@@ -6,17 +6,10 @@
     <title>Add Food Item</title>
     <link rel="stylesheet" href="addfood.css" />
   </head>
-  <style>
-    .center-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  </style>
   <body>
     <div class="add-container">
       <h2>Manage Inventory</h2>
-      <form action="#" method="post">
+      <form action="../php/addInventory.php" method="post">
         <label for="foodName">Food Name:</label>
         <input
           type="text"
@@ -29,8 +22,8 @@
         <label for="category">Category:</label>
         <select id="category" name="category" required>
           <option value="">Select Category</option>
-          <option value="breakfast">In-Stock</option>
-          <option value="lunch">Out Of Stock</option>
+          <option value="In-Stock">In-Stock</option>
+          <option value="Out Of Stock">Out Of Stock</option>
         </select>
 
         <label for="Price">Price: [Pesos]</label>
@@ -42,7 +35,7 @@
           required
         />
 
-        <label for="Price">Inventory Stock: [How many in-stock]</label>
+        <label for="Inventory">Inventory Stock: [How many in-stock]</label>
         <input
           type="number"
           id="Inventory"
