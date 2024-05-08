@@ -6,7 +6,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
 $email = $_POST['email'];
 $password = $_POST['password'];
 
@@ -15,7 +14,6 @@ $stmt->bind_param("s", $email);
 
 $stmt->execute();
 
-// Get the result
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
@@ -25,6 +23,8 @@ if ($user && password_verify($password, $user['password'])) {
     $_SESSION['loggedin'] = true;
     $_SESSION['id'] = $user['id'];
     $_SESSION['name'] = $user['name'];
+    $_SESSION['stallname'] = $user['stallname'];
+    
     echo "Username: ". $_SESSION['name'];
 
     header("Location:../Dashboard/index.php");

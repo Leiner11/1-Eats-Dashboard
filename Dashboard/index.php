@@ -207,6 +207,7 @@ session_start();
         <!--------------- END OF INSIGHTS --------------->
         <div class="recent-orders">
           <h2>Recent Orders</h2>
+
           <table>
             <thead>
               <tr>
