@@ -135,7 +135,7 @@ function updateChartOptions(purchaseOrders, salesOrders) {
       enabled: false,
     },
     stroke: {
-      curve: "straight",
+      curve: "smooth",
     },
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"], // Ensure this matches the number of data points
     markers: {
