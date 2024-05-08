@@ -20,12 +20,37 @@
     />
     <link rel="stylesheet" href="./index.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+      .content2 button {
+        background-color: #7781eb;
+      }
+    </style>
+
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         function updateInventory() {
           fetch("../php/inventory.php")
             .then((response) => response.json())
             .then((data) => {
+              // Check if the data array is empty
+              if (data.length === 0) {
+                // Check if the no-records message already exists
+                const noRecordsMessage = document.querySelector(".no-records");
+                if (!noRecordsMessage) {
+                  // If not, create and append the message
+                  const noRecordsDiv = document.createElement("div");
+                  noRecordsDiv.className = "no-records";
+                  noRecordsDiv.textContent =
+                    "No records available. Click Manage Inventory on the left side of your screen to add!";
+                  document.querySelector(".gallery2").appendChild(noRecordsDiv);
+                }
+                return; // Exit the function early
+              }
+
+              // Clear the gallery2 container to remove the no-records message
+              document.querySelector(".gallery2").innerHTML = "";
+
               data.forEach((item) => {
                 // Check if the item already exists in the DOM
                 const existingItem = document.querySelector(
@@ -48,17 +73,9 @@
                 h3.style.fontSize = "24px"; // Adjust the font size as needed
                 productDiv.appendChild(h3);
 
-                // Removed the placeholder text
-                // const p = document.createElement("p");
-                // p.className = "p2";
-                // p.textContent = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
-                // productDiv.appendChild(p);
-
                 const h6 = document.createElement("h6");
                 h6.textContent = item.inventory_status; // Display inventory_status instead of price
                 productDiv.appendChild(h6);
-
-                // Removed the star feature by omitting the <ul> element
 
                 const button = document.createElement("button");
                 button.className = `buy-${item.id}`;
