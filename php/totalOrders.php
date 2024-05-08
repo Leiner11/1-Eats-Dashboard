@@ -5,25 +5,36 @@ error_reporting(E_ALL);
 
 include("./Config.php");
 
-// Get today's date
-$today = date('Y-m-d H:i:s');
+session_start();
 
-// SQL query to count orders with status "COMPLETE" from the last 24 hours
-$sql = "SELECT COUNT(*) AS total_complete_orders FROM orders WHERE status = 'COMPLETE' AND order_date >= '$today' - INTERVAL 24 HOUR";
+// Check if the 'stallname' session variable is set
+if (isset($_SESSION['stallname'])) {
+    $loggedInStallName = $_SESSION['stallname'];
 
-$stmt = mysqli_prepare($conn, $sql);
+    $today = date('Y-m-d H:i:s');
 
-mysqli_stmt_execute($stmt);
+    // SQL query to count orders with status "COMPLETE" from the last 24 hours for the logged-in user's stallname
+    $sql = "SELECT COUNT(*) AS total_complete_orders FROM orders WHERE status = 'COMPLETE' AND order_date >=? AND stallname =?";
 
-$result = mysqli_stmt_get_result($stmt);
+    $stmt = mysqli_prepare($conn, $sql);
 
-$row = mysqli_fetch_assoc($result);
-$totalCompleteOrders = $row['total_complete_orders'];
+    mysqli_stmt_bind_param($stmt, "ss", $today, $loggedInStallName);
 
-mysqli_stmt_close($stmt);
-mysqli_close($conn);
+    mysqli_stmt_execute($stmt);
 
-// Output the count as JSON
-header('Content-Type: application/json');
-echo json_encode(['totalCompleteOrders' => $totalCompleteOrders]);
+    $result = mysqli_stmt_get_result($stmt);
+
+    $row = mysqli_fetch_assoc($result);
+    $totalCompleteOrders = $row['total_complete_orders'];
+
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+
+    header('Content-Type: application/json');
+    echo json_encode(['totalCompleteOrders' => $totalCompleteOrders]);
+} else {
+    // If 'stallname' is not set, return an error message
+    http_response_code(401); // Unauthorized
+    echo json_encode(['error' => 'Unauthorized: Please log in first.']);
+}
 ?>
