@@ -58,7 +58,7 @@ session_start();
         </div>
         <div class="sign-up-link">
           <p>
-            Don't have account? <a href="../Register/register.html">Register</a>
+            Don't have account? <a href="../Register/register.php">Register</a>
           </p>
         </div>
       </form>
